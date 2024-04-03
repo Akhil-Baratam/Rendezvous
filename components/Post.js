@@ -29,4 +29,6 @@ const Post = forwardRef( ({title, place, time, date, pernum, description, hashta
 }
 )
 
+Post.displayName = 'Post';
+
 export default Post

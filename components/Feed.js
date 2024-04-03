@@ -72,11 +72,7 @@ function Feed() {
         return dateMatches && optionMatches && interestMatches;
       })    
     )
-    console.log(selectedDate)
-    console.log(selectedOption)
-    console.log(selectedInterest)
-    console.log(filteredPosts)
-  },[allPosts, selectedDate,selectedInterest,selectedOption]);
+  },[allPosts, selectedDate,selectedInterest,selectedOption, filteredPosts]);
 
   useEffect(() => {
     updateFilteredPosts();
