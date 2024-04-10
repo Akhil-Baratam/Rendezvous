@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Bars3Icon, GlobeAsiaAustraliaIcon, MagnifyingGlassIcon, MoonIcon, SunIcon, UserCircleIcon, UserIcon } from '@heroicons/react/24/solid';
+import { Bars3Icon, MagnifyingGlassIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 
 function Header() {
   const router = useRouter();

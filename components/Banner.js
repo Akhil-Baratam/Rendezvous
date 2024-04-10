@@ -18,8 +18,6 @@ function Banner() {
           </div>
         </div>
 
-
-
         <div className='flex flex-col items-center justify-evenly gap-5 col-span-1 row-span-2 border-black border-2 rounded-xl'>
           <div className='flex flex-col items-center'>
             <p className=" h-8 font-semibold pb-2 ">Explore by place</p>

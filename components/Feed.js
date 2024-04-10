@@ -87,9 +87,30 @@ function Feed() {
     setSelectedOption(null);
     setSelectedInterest(null);
   }
+  const handleCreate = (e) => {
+    e.preventDefault();
+    setShowModal(true);
+  }
+  
+
 
   return (
-    <main className='flex flex-col flex-grow py-2 divide-y-2 gap-2 rounded-lg items-center'>
+    <main className='flex'>
+    <section className=' flex-col items-center pl-4 pr-6 hidden w-1/5 xl:inline-flex xl:min-w-[300px] sticky top-0 overflow-y-auto '>
+        <p className=' font-semibold text-2xl pt-3'>Hashtags</p>
+        <div className="grid grid-cols-3 gap-x-2 gap-y-4 pt-14">
+          {interests.map((interest) => (
+            <button
+              key={interest}
+              onClick={() => handleInterestClick(interest)}
+              className="hashbutton"
+            >
+              {interest}
+            </button>
+          ))}
+        </div>
+    </section>
+    <section className='flex flex-col flex-grow py-2 divide-y-2 gap-2 rounded-lg items-center'>
         <form className=' flex flex-col shrink items-center '>
           <div className=' flex border-2 rounded-full items-center gap-10 px-2 '>
             <div className='flex items-center py-2 rounded-full  '> 
@@ -98,14 +119,14 @@ function Feed() {
             </div>
             <input Value={selectedDate || ''} onChange={handleDateChange} className='' type="date" name="Date" id="date" />
             <Dropdown value={selectedOption} onChange={(e)=>{setSelectedOption(e.target.value)}} />
-            <button onClick={ ()=>{setShowModal(true)}} className=' font-medium rounded-3xl text-white py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'> Create </button>
+            <button onClick={handleCreate} className=' font-medium rounded-3xl text-white py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'> Create </button>
           </div>
-          <button type='reset' onClick={handleClear} className='font-medium rounded-3xl text-white py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'>x Clear</button>
+          <button type='button' onClick={handleClear} className='font-medium rounded-3xl text-white mt-2 py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'>x Clear</button>
         </form>
 
         {showModal && <Modal closeModel={closeModel} />}
 
-        <div className="flex gap-2">
+        {/* <div className="flex gap-2">
           {interests.map((interest) => (
             <button
               key={interest}
@@ -117,7 +138,7 @@ function Feed() {
               {interest}
             </button>
           ))}
-        </div>
+        </div> */}
 
 
         <section className="pt-2">
@@ -141,7 +162,10 @@ function Feed() {
           )}
         </section>
 
+    </section>
+
     </main>
+
   )
 }
 
