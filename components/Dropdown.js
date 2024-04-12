@@ -11,9 +11,9 @@ const Dropdown = ({value, onChange}) => {
     <div>
       <select id="dropdown" value={value} onChange={onChange}  className=' border-none outline-none' >
         <option className='p-1' value="">no. of Participants</option>
-        <option className='p-1' value="option1">less than 5</option>
-        <option className='p-1' value="option2">less than 10</option>
-        <option className='p-1' value="option3">more than 10</option>
+        <option className='p-1' value="less than 5">less than 5</option>
+        <option className='p-1' value="less than 10">less than 10</option>
+        <option className='p-1' value="more than 10">more than 10</option>
       </select>
     </div>
   );

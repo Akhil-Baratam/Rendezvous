@@ -4,7 +4,7 @@ import Dropdown from './Dropdown'
 import Modal from './Modal';
 import Post from './Post';
 import { db } from './firebase';
-import { collection,onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import FlipMove from 'react-flip-move';
 
@@ -109,6 +109,7 @@ function Feed() {
             </button>
           ))}
         </div>
+        <button type='button' onClick={handleClear} className='font-medium rounded-3xl text-white mt-2 py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'>x Clear</button>
     </section>
     <section className='flex flex-col flex-grow py-2 divide-y-2 gap-2 rounded-lg items-center'>
         <form className=' flex flex-col shrink items-center '>
@@ -121,24 +122,9 @@ function Feed() {
             <Dropdown value={selectedOption} onChange={(e)=>{setSelectedOption(e.target.value)}} />
             <button onClick={handleCreate} className=' font-medium rounded-3xl text-white py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'> Create </button>
           </div>
-          <button type='button' onClick={handleClear} className='font-medium rounded-3xl text-white mt-2 py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'>x Clear</button>
         </form>
 
         {showModal && <Modal closeModel={closeModel} />}
-
-        {/* <div className="flex gap-2">
-          {interests.map((interest) => (
-            <button
-              key={interest}
-              onClick={() => handleInterestClick(interest)}
-              className={`bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold ${
-                selectedInterest === interest ? 'bg-blue-500 text-white' : ''
-              }`}
-            >
-              {interest}
-            </button>
-          ))}
-        </div> */}
 
 
         <section className="pt-2">

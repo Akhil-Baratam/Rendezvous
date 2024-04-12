@@ -3,13 +3,13 @@ import { ChevronRightIcon } from '@heroicons/react/24/solid'
 
 const Post = forwardRef( ({title, place, time, date, pernum, description, hashtag}, ref) => {
     return (
-    <div ref={ref} className=' flex max-w-3xl rounded overflow-hidden shadow-md mt-2 p-4  '>
+    <div ref={ref} className=' flex max-w-2xl rounded overflow-hidden shadow-md mt-2 p-4  '>
         <div className=''>
             <div className='flex flex-grow items-center justify-between'>
                 <span className='font-semibold text-3xl pb-1'>{title}</span>
                 <span className='flex gap-4 pr-10 pt-1'>
                     <p className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>{date}</p>
-                    <p className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-medium text-gray-700 mr-2 mb-2'>{time.stringify}</p>
+                    {/* <p className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-medium text-gray-700 mr-2 mb-2'>{time.stringify}</p> */}
                 </span>
             </div>
             <div>

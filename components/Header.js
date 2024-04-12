@@ -10,7 +10,8 @@ function Header() {
           {/* Left */}
           <div className="relative flex items-center h-10 my-auto cursor-pointer ">
             <Image src="/logo.png" alt='Rendezvous'
-              width={80} height={50} objectFit
+              width={80} height={50} objectFit 
+              onClick={()=>{router.push('/')}}
               />
           </div>
 
@@ -22,7 +23,7 @@ function Header() {
 
           {/* Right */}
           <div className='flex items-center justify-end space-x-6 text-gray-500'> 
-            <p onClick={()=>{router.push('/')}} className='hidden font-normal cursor-pointer font-RenFont hover:text-black hover:font-normal lg:inline-flex'>Home</p>
+            <p onClick={()=>{router.push("/")}} className='hidden font-normal cursor-pointer font-RenFont hover:text-black hover:font-normal lg:inline-flex'>Home</p>
             <p onClick={()=>{router.push('/explore')}} className='hidden font-normal cursor-pointer font-RenFont hover:text-black hover:font-normal lg:inline-flex'>Explore REN</p>
             <p className='hidden font-normal cursor-pointer font-RenFont hover:text-black hover:font-normal lg:inline-flex'>Contact Us</p>
             {/* <div className='flex items-center p-1 space-x-1 bg-gray-900 rounded-full cursor-pointer hover:bg-gray-900'>

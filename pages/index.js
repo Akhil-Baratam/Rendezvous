@@ -1,9 +1,13 @@
 import Head  from "next/head";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
-import { useRouter } from "next/router";
+import { selectUser } from "@/Slices/userSlice";
+import {useSelector} from "react-redux"
+import Login from "@/components/Login";
 
 export default function Home() {
+  const user = useSelector(selectUser);
+
   return (
     <div className="font-RenFont" >
       <Head>
@@ -13,11 +17,18 @@ export default function Home() {
       </Head>
 
       <Header />
-      <Banner />
 
-      <main className="px-8 mx-auto max-w-7xl">
+      {!user ? (
+        <Login />
+      ) : (
+        <Banner />
+      )}
 
-      </main>
+      {/* <Banner /> */}
+
+      {/* <main className="px-8 mx-auto max-w-7xl">
+
+      </main> */}
       
     </div>
   );
