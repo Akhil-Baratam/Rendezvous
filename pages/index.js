@@ -1,12 +1,34 @@
 import Head  from "next/head";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
-import { selectUser } from "@/Slices/userSlice";
-import {useSelector} from "react-redux"
+import { useEffect } from "react";
+import { auth } from "@/components/firebase";
+import { selectUser, login, logout } from "@/Slices/userSlice";
+import {useDispatch, useSelector} from "react-redux"
+import {onAuthStateChanged} from "firebase/auth"
 import Login from "@/components/Login";
 
-export default function Home() {
+function App() {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        // user is logged in, send the user's details to redux, store the current user in the state
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+            photoUrl: userAuth.photoURL,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, []);
 
   return (
     <div className="font-RenFont" >
@@ -23,19 +45,9 @@ export default function Home() {
       ) : (
         <Banner />
       )}
-
-      {/* <Banner /> */}
-
-      {/* <main className="px-8 mx-auto max-w-7xl">
-
-      </main> */}
-      
+            
     </div>
   );
 }
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+export default App;

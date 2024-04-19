@@ -95,7 +95,7 @@ function Feed() {
 
 
   return (
-    <main className='flex'>
+    <main className='flex z-0'>
     <section className=' flex-col items-center pl-4 pr-6 hidden w-1/5 xl:inline-flex xl:min-w-[300px] sticky top-0 overflow-y-auto '>
         <p className=' font-semibold text-2xl pt-3'>Hashtags</p>
         <div className="grid grid-cols-3 gap-x-2 gap-y-4 pt-14">

@@ -24,7 +24,7 @@ async function addPostToFirestore(title, place, date, dropdownValue, time, inter
         console.error("Error adding document ", error)
         return false;
     }
-
+ 
   }
 
 function Modal({closeModel}) {

@@ -1,10 +1,22 @@
 import React from 'react'
 import Image from 'next/image';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth } from './firebase';
+import { logout, selectUser } from '@/Slices/userSlice';
 import { useRouter } from 'next/router';
 import { Bars3Icon, MagnifyingGlassIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 
 function Header() {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  const logoutofApp = () => {
+    dispatch(logout());
+    auth.signOut();
+  }
+
+
   return (
     <header className="sticky top-0 z-50 grid grid-cols-3 p-3 space-x-4 bg-white shadow-md md:px-10">
           {/* Left */}
@@ -33,7 +45,7 @@ function Header() {
             </div> */}
             <div className='flex items-center p-2 space-x-2 border-2 rounded-full lg:space-x-0'>
               <Bars3Icon className='inline-flex h-6 cursor-pointer lg:hidden ' />
-              <UserCircleIcon className='h-6 transition duration-150 cursor-pointer hover:text-black hover:scale-105 active:scale-90'/>
+              <UserCircleIcon onClick={logoutofApp} className='h-6 transition duration-150 cursor-pointer hover:text-black hover:scale-105 active:scale-90'/>
             </div>
           </div>
     </header>
