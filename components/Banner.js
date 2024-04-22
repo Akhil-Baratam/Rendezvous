@@ -7,8 +7,8 @@ function Banner() {
 
   return (
     <main className='flex container mx-auto py-10 '>
-      <section className='grid grid-cols-3 gap-x-6 gap-y-4'>
-        <div className='flex flex-col col-span-2 border-black border-2 rounded-xl gap-1 pl-6 pr-10 py-8 '>
+      <section className=''>
+        <div className='flex flex-col col-span-2 pl-2 pr-10 py-8 '>
           <p className="text-6xl font-semibold md:text-7xl lg:text-9xl">Rendezvous</p>
           <p className='px-3 pt-10 font-normal text-gray-500 line-through decoration-1 md:font-medium'>A place where group of people meet at an agreed time and place</p>
           <p className='pt-4 pl-3 font-mediun md:font-medium'>Where strangers become known! Join the chaos and joy of meeting like-minded strangers.</p>
@@ -18,7 +18,7 @@ function Banner() {
           </div>
         </div>
 
-        <div className='flex flex-col items-center justify-evenly gap-5 col-span-1 row-span-2 border-black border-2 rounded-xl'>
+        {/* <div className='flex flex-col items-center justify-evenly gap-5 col-span-1 row-span-2 border-black border-2 rounded-xl'>
           <div className='flex flex-col items-center'>
             <p className=" h-8 font-semibold pb-2 ">Explore by place</p>
             <div className='grid  grid-cols-3 gap-4 '>
@@ -54,7 +54,7 @@ function Banner() {
         <div className='flex flex-col items-center justify-center gap-1 p-5 col-span-1 border-black border-2 rounded-xl'>
           <p className='p-4 font-semibold md:font-medium'>Meets Organized</p>
           <p className='text-3xl font-semibold md:font-medium'>1504</p>
-        </div>
+        </div> */}
       </section>
     </main>
   )

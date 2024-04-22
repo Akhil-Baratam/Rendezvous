@@ -40,6 +40,8 @@ function Displaymodal({title, place, time, date, pernum, description, hashtag, c
             <XMarkIcon className=' w-1/12 h-5 pt-1 px-2 cursor-pointer ' onClick={closeDisplaymodel} />
         </div>
         <p className='pl-4 text-lg text-gray-600 placeholder-gray-400 bg-transparent outline-none'  type="text" placeholder='Title?' />{date}<p/>
+        <p className=''>{time}</p>
+
         <div className='flex gap-4'>
             <p className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>{place}</p>
             <p className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>{pernum}</p>

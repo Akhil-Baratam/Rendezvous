@@ -12,8 +12,7 @@ import FlipMove from 'react-flip-move';
 function Feed() {
   const [showModal, setShowModal] = useState(false);
   const [allPosts, setAllPosts] = useState([]);
-  // Assuming you have an array of interests (e.g., ["music", "dance"])
-  const interests = ["music", "dance", "films"];
+  const interests = ["music", "dance", "films", "bussiness"];
 
   // Add a new state to manage the selected interest
   const [selectedInterest, setSelectedInterest] = useState(null);
@@ -55,7 +54,7 @@ function Feed() {
   
 
   const updateFilteredPosts = useCallback(()=>{
-    setFilteredPosts(
+    setFilteredPosts( 
       allPosts.filter((post) => {
         // Filter by date (if a date is selected)
         const dateMatches = !selectedDate || post.date === selectedDate;
@@ -95,10 +94,10 @@ function Feed() {
 
 
   return (
-    <main className='flex z-0'>
-    <section className=' flex-col items-center pl-4 pr-6 hidden w-1/5 xl:inline-flex xl:min-w-[300px] sticky top-0 overflow-y-auto '>
+    <main className='flex z-0 mx-auto flex-grow'>
+    <section className=' flex-col items-center pr-6 hidden w-1/5 xl:inline-flex xl:min-w-[300px] sticky top-0 overflow-y-auto '>
         <p className=' font-semibold text-2xl pt-3'>Hashtags</p>
-        <div className="grid grid-cols-3 gap-x-2 gap-y-4 pt-14">
+        <div className="flex flex-wrap gap-x-2 gap-y-4 pt-14">
           {interests.map((interest) => (
             <button
               key={interest}
@@ -111,7 +110,9 @@ function Feed() {
         </div>
         <button type='button' onClick={handleClear} className='font-medium rounded-3xl text-white mt-2 py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'>x Clear</button>
     </section>
+
     <section className='flex flex-col flex-grow py-2 divide-y-2 gap-2 rounded-lg items-center'>
+      <section className='flex flex-col gap-2'>
         <form className=' flex flex-col shrink items-center '>
           <div className=' flex border-2 rounded-full items-center gap-10 px-2 '>
             <div className='flex items-center py-2 rounded-full  '> 
@@ -123,6 +124,22 @@ function Feed() {
             <button onClick={handleCreate} className=' font-medium rounded-3xl text-white py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'> Create </button>
           </div>
         </form>
+
+        <section className=' flex gap-4 items-center justify-center min-w-[300px] xl:hidden'>
+            <div className="flex flex-wrap gap-x-2">
+              {interests.map((interest) => (
+                <button
+                  key={interest}
+                  onClick={() => handleInterestClick(interest)}
+                  className="hashbutton"
+                >
+                  {interest}
+                </button>
+              ))}
+            </div>
+            <button type='button' onClick={handleClear} className='font-medium rounded-3xl text-white py-1 px-2 bg-gray-900 hover:bg-black focus:outline-none'>x Clear</button>
+        </section>
+      </section>
 
         {showModal && <Modal closeModel={closeModel} />}
 

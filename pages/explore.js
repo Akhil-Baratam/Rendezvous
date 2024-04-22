@@ -11,7 +11,7 @@ function Explore() {
         
         {/* Feed */}
         <div className='inline-flex w-3/5 pt-6 flex-grow overflow-y-auto'>
-          <Feed />
+          <Feed className='inline-flex flex-grow' />
         </div>
 
         {/* Mapbox */}

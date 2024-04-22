@@ -167,7 +167,7 @@ const Register = () => {
   );
 };
 
-const Auth = () => {
+const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   const toggleForm = () => {
@@ -195,4 +195,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Login;
