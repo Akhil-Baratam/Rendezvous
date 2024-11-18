@@ -1,11 +1,11 @@
-import Head  from "next/head";
+import Head from "next/head";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import { useEffect } from "react";
-import { auth } from "@/components/firebase";
+import { auth } from "../components/firebase";
 import { selectUser, login, logout } from "@/Slices/userSlice";
-import {useDispatch, useSelector} from "react-redux"
-import {onAuthStateChanged} from "firebase/auth"
+import { useDispatch, useSelector } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
 import Login from "@/components/Login";
 
 function App() {
@@ -13,9 +13,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (userAuth) => {
+    const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
       if (userAuth) {
-        // user is logged in, send the user's details to redux, store the current user in the state
         dispatch(
           login({
             email: userAuth.email,
@@ -28,24 +27,21 @@ function App() {
         dispatch(logout());
       }
     });
-  }, []);
+
+    return () => unsubscribe();
+  }, [dispatch]);
 
   return (
-    <div className="font-RenFont" >
+    <div className="font-RenFont">
       <Head>
         <title>Rendezvous</title>
         <meta name="Rendezvous" content="The stranger's choice" />
-        <link rel="icon" href="logo.png" />
+        <link rel="icon" href="/logo.png" />
       </Head>
 
       <Header />
 
-      {!user ? (
-        <Login />
-      ) : (
-        <Banner />
-      )}
-            
+      {!user ? <Login /> : <Banner />}
     </div>
   );
 }

@@ -6,7 +6,7 @@ function Banner() {
   const router = useRouter();
 
   return (
-    <main className='flex container mx-auto py-10 '>
+    <main className='flex flex-col container mx-auto py-10 '>
       <section className=''>
         <div className='flex flex-col col-span-2 pl-2 pr-10 py-8 '>
           <p className="text-6xl font-semibold md:text-7xl lg:text-9xl">Rendezvous</p>
@@ -17,44 +17,14 @@ function Banner() {
           shadow-md cursor-pointer hover:shadow-xl hover:scale-105 active:scale-90 '>Explore Ren <ArrowRightIcon className='h-5 pl-2' /> </button>
           </div>
         </div>
-
-        {/* <div className='flex flex-col items-center justify-evenly gap-5 col-span-1 row-span-2 border-black border-2 rounded-xl'>
-          <div className='flex flex-col items-center'>
-            <p className=" h-8 font-semibold pb-2 ">Explore by place</p>
-            <div className='grid  grid-cols-3 gap-4 '>
-              <p className=' text-sm text-center border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-105 active:scale-95'>/ Banglore</p>
-              <p className=' text-sm text-center border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-105 active:scale-95'>/ Hyderabad</p>
-              <p className=' text-sm text-center border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-105 active:scale-95'>/ Mumbai</p>
-              <p className=' text-sm text-center border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-105 active:scale-95'>/ Delhi</p>
-              <p className=' text-sm text-center border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-105 active:scale-95'>/ Chennai</p>
-              <p className=' text-sm text-center border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-105 active:scale-95'>/ Jalandhar</p>
-            </div>
-          </div>
-
-          <div className='flex flex-col items-center'>
-            <p className=" h-8 font-semibold pb-4 ">Explore by Interests</p>
-            <div className='grid  grid-cols-3 gap-4 '>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-              <p className=' text-sm border-2 border-gray-900 rounded-full px-2 py-1 cursor-pointer hover:shadow-md hover:scale-100 active:scale-95'>/ Music</p>
-            </div>
-          </div>
+      </section>
+      <section className='flex gap-16 max-w-max justify-between'>
+        <div className='flex flex-col items-center p-16 border-3 rounded-lg shadow-md shadow-slate-800'>
+          <p className=' font-normal'>Total Meets created:</p>
+          <p className=' text-2xl'>515</p>
         </div>
-
-        <div className='flex flex-col items-center justify-center col-span-1 border-black border-2 rounded-xl'>
-          <p className=' font-bold'>How it Works?</p>
-        </div>
-
-        <div className='flex flex-col items-center justify-center gap-1 p-5 col-span-1 border-black border-2 rounded-xl'>
-          <p className='p-4 font-semibold md:font-medium'>Meets Organized</p>
-          <p className='text-3xl font-semibold md:font-medium'>1504</p>
-        </div> */}
+        <div className='p-16 border-3 rounded-lg shadow-md shadow-slate-800'>Discover Meets </div>
+        <div className='p-16 border-3 rounded-lg shadow-md shadow-slate-800'>chat with Meetmates</div>
       </section>
     </main>
   )

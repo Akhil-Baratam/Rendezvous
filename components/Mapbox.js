@@ -1,10 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import ReactMapGL from 'react-map-gl';
-import Map from 'react-map-gl';
+import React from "react";
+import Map from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 function Mapbox() {
-
   return (
     <div style={{ height: '100%', width: '100%', overflowY: 'hidden' }}>
       <Map
@@ -14,33 +12,14 @@ function Mapbox() {
           latitude: 22.1991660760527,
           zoom: 6
         }}
-        mapboxAccessToken='pk.eyJ1IjoiYWtoaWxiYXJhdGFtIiwiYSI6ImNsdWZlZWE5ZzFiMngybG56eDIzZ3dydGcifQ.JLN5dwERKhAuB79QoxASnw'
+        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
         mapStyle="mapbox://styles/akhilbaratam/clufdu7ov00ev01r278i3anuy"
-        cursor='grab'
-      />
+        style={{ width: "100%", height: "100%" }}
+      >
+        {/* Add markers, popups, or other map elements here */}
+      </Map>
     </div>
   );
 }
-
-// function Mapbox() {
-//   const [viewport, setViewport] = useState({
-//     width: "100%",
-//     height: "100%",
-//     longitude: -122.4376,
-//     latitude: 37.7577,
-//     zoom: 9          
-//   });
-
-//   return (
-//       <ReactMapGL
-//         // mapLib={import('mapbox-gl')}
-//         mapboxAccessToken='pk.eyJ1IjoiYWtoaWxiYXJhdGFtIiwiYSI6ImNsdWZlZWE5ZzFiMngybG56eDIzZ3dydGcifQ.JLN5dwERKhAuB79QoxASnw'
-//         mapStyle="mapbox://styles/akhilbaratam/clufdu7ov00ev01r278i3anuy"
-//         {...viewport}
-//         onViewportChange={(nextViewport) => setViewport(nextViewport)}
-//         cursor='grab'
-//       ></ReactMapGL>
-//   );
-// }
 
 export default Mapbox;
