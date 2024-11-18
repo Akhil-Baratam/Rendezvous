@@ -1,17 +1,14 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import Dropdown from './Dropdown'
 import Modal from './Modal';
 import Post from './Post';
-import { db } from './firebase';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import FlipMove from 'react-flip-move';
 import Hashtags from './Hashtags';
 
-function Feed() {
+function Feed({ posts }) {
   const [showModal, setShowModal] = useState(false);
-  const [allPosts, setAllPosts] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState(posts);
   const [searchInput, setSearchInput] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
@@ -19,22 +16,8 @@ function Feed() {
 
   const interests = ["music", "dance", "films", "business"];
 
-  useEffect(() => {
-    const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setAllPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }))
-      );
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   const updateFilteredPosts = useCallback(() => setFilteredPosts(
-      allPosts.filter((post) => {
+      posts.filter((post) => {
         const placeMatches = !searchInput || post.place.toLowerCase().includes(searchInput.toLowerCase());
         const dateMatches = !selectedDate || post.date === selectedDate;
         const optionMatches = !selectedOption || post.participantLimit === selectedOption;
@@ -42,12 +25,12 @@ function Feed() {
         return placeMatches && dateMatches && optionMatches && interestMatches;
       })
     ),
-    [allPosts, searchInput, selectedDate, selectedInterest, selectedOption]
+    [posts, searchInput, selectedDate, selectedInterest, selectedOption]
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     updateFilteredPosts();
-  }, [updateFilteredPosts]);
+  }, [updateFilteredPosts, posts]);
 
   const handleClear = () => {
     setSearchInput('');

@@ -11,6 +11,7 @@ function Header() {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  console.log(user);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -20,7 +21,7 @@ function Header() {
   const logoutOfApp = () => {
     dispatch(logout());
     auth.signOut();
-    router.push('/login');
+    router.push('/');
   };
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="max-w-7xl mx-auto flex items-center justify-between p-3 md:px-10">
+      <div className="max-w-9xl flex items-center justify-between py-3 md:px-4">
         <Link href="/" className="cursor-pointer">
           <Image
             src="/logo.png"
@@ -40,7 +41,7 @@ function Header() {
           />
         </Link>
 
-        {router.pathname === '/home' && (
+        {router.pathname === '/' && (
           <div className="flex items-center py-2 rounded-full md:border-2 md:border-gray-300">
             <input
               className="flex-grow pl-4 pr-2 py-1 text-sm text-gray-600 placeholder-gray-400 bg-transparent border-none outline-none focus:ring-0"
@@ -52,14 +53,16 @@ function Header() {
         )}
 
         <nav className="hidden lg:flex items-center space-x-6 text-gray-500">
-          <Link href="/home" className="nav-link">Home</Link>
+          {!user ? <Link href="/" className="nav-link">Home</Link> : <Link href="/profile" className="nav-link">Profile</Link>}
           <Link href="/explore" className="nav-link">Explore REN</Link>
           <Link href="/contact" className="nav-link">Contact Us</Link>
-          {user && (
+          
+          {user ? (
             <button onClick={logoutOfApp} className="nav-link">
               Logout
             </button>
-          )}
+          ) : (<Link href="/login" className="nav-link">Login
+              </Link>)}
         </nav>
 
         <div className="lg:hidden">
@@ -70,13 +73,17 @@ function Header() {
       {isOpen && (
         <div className="lg:hidden bg-white shadow-md">
           <nav className="flex flex-col items-center py-4 space-y-4">
-            <Link href="/home" className="nav-link">Home</Link>
+          {!user ? <Link href="/" className="nav-link">Home</Link> : <Link href="/profile" className="nav-link">Profile</Link>}
             <Link href="/explore" className="nav-link">Explore REN</Link>
             <Link href="/contact" className="nav-link">Contact Us</Link>
-            {user && (
+            {user ? (
               <button onClick={logoutOfApp} className="nav-link">
                 Logout
               </button>
+            ) : (
+              <Link href="/login" className="nav-link">
+                Log in
+              </Link>
             )}
           </nav>
         </div>

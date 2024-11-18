@@ -3,11 +3,13 @@ import { auth } from './firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { login } from '@/Slices/userSlice';
+import { useRouter } from 'next/router';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ const LoginForm = () => {
         displayName: user.displayName,
         photoUrl: user.photoURL,
       }));
+      router.push('/explore');
     } catch (error) {
       alert(error.message);
     }
@@ -82,6 +85,8 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const dispatch = useDispatch();
+  const router = useRouter();
+
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -90,11 +95,29 @@ const Register = () => {
       await updateProfile(userCredential.user, {
         displayName: username,
       });
+      
       dispatch(login({
         email: userCredential.user.email,
         uid: userCredential.user.uid,
         displayName: username,
         photoUrl: userCredential.user.photoURL,
+      }));
+      router.push('/explore');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      dispatch(login({
+        email: user.email,
+        uid: user.uid,
+        displayName: user.displayName,
+        photoUrl: user.photoURL,
       }));
     } catch (error) {
       alert(error.message);
@@ -102,7 +125,7 @@ const Register = () => {
   };
     
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col items-center">
       <form onSubmit={handleRegister} className="w-full max-w-md space-y-4">
         <input
           type="text"
@@ -135,6 +158,12 @@ const Register = () => {
           Register
         </button>
       </form>
+      <button
+        onClick={handleGoogleSignIn}
+        className="mt-4 w-full max-w-md p-2 bg-red-600 text-white rounded hover:bg-red-700 transition duration-200"
+      >
+        Sign up with Google
+      </button>
     </div>
   );
 };

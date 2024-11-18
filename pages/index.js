@@ -7,9 +7,11 @@ import { selectUser, login, logout } from "@/Slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import Login from "@/components/Login";
+import { useRouter } from "next/router";
 
 function App() {
   const user = useSelector(selectUser);
+  const router = useRouter();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,6 +25,7 @@ function App() {
             photoUrl: userAuth.photoURL,
           })
         );
+        router.push("/explore");
       } else {
         dispatch(logout());
       }
@@ -41,7 +44,7 @@ function App() {
 
       <Header />
 
-      {!user ? <Login /> : <Banner />}
+      <Banner />
     </div>
   );
 }
